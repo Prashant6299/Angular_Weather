@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row text-center ">
+    <div class="offset-sm-2 col-sm-8 design">
+      <h3 class="text-center mb-5 mt-2 heading"><h6 >
+        <span style="color:white">Welcome to</span></h6><span style="color:white">W</span>ise <span style = "color:white">W</span>eather
+      </h3>
+    <form [formGroup]= 'form' (ngSubmit) ="sendtoapi(form)">
+      <div class="form-group d-flex justify-content-center">
+      <input type="text" formControlName = 'location' class="form-control-lg" placeholder="Enter a location" style="width: 80%; background: linear-gradient(30deg, rgb(135, 108, 212),#a259c2); color:#fff; border:none">
+      <button class="btn btn-warning inbarbutton" *ngIf="this.flag2" disabled><span class="spinner-border spinner-border-sm text-light" role="status" aria-hidden="true"></span></button>
+      <button class="btn btn-warning inbarbutton" type = "submit" [disabled]="form.invalid" *ngIf ="!this.flag2"><i class="fa fa-search"></i></button>
+    </div>
+      
+      <div class="alert alert-danger" style="margin:auto;width: 90%" *ngIf="form.controls['location'].touched && form.controls['location'].invalid">
+        Please enter a location!
+      </div>
+    </form>
+    <div class="text-center mt-5">
+    <button class="btn btn-warn" type="button" *ngIf="this.flag">
+        <span class="spinner-border spinner-border-sm text-warning" role="status" aria-hidden="true"></span>
+        <span class="sr-only">Loading...</span>
+      </button>&nbsp;
+        <button class="btn btn-warning loc" (click) = "usecurrent()" [disabled]="this.flag">
+            <span class="spinner-grow spinner-grow-sm text-light" style = 'width:1.3em; height:1.3em' role="status" *ngIf="this.flag" aria-hidden="true"></span>
+          Use my location</button>
+        </div>
+    </div>
+  </div>
+  
+</div>
+<footer style = "position: absolute; width:100%; left:0px; bottom:0px">
+    <div class="text-center " style = "background-color:rgb(36, 35, 35);width:100%;padding:.5em 0em .5em 0em; color:white; margin-bottom:0px;">
+      <small>Wise Weather &copy; <br>
+        Developer: Prashant Singh&nbsp;<br><a href ="https://www.facebook.com/prashant6299" class = "icons" target="_blank"><i class = "fa fa-facebook"></i></a>&nbsp;
+        <a href ="https://www.instagram.com/_pra.shhh_/" class = "icons" target="_blank"><i class = "fa fa-instagram"></i></a>
+        &nbsp;
+        <a href="mailto:psingh6299@gmail.com" class="icons"><i class="fa fa-envelope"></i></a>
+      </small>
+    </div>
+  </footer>

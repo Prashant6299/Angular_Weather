@@ -1,0 +1,99 @@
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="offset-sm-4 col-sm-4">
+      <a routerLink="/result" class="link">
+        <div class="design" style="font-size:1em; line-height: 1em">
+          <i class="fa fa-angle-double-left fa-1x"></i>&nbsp;&nbsp;Back
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+  <div class="row text-center">
+        <div class="offset-sm-4 col-sm-4 text-center">
+                <div class="spinner-grow text-warning" *ngIf="!this.flag && check" style="width:15em; height:15em;margin-top:2em;" role="status">
+                        <span class="sr-only">Loading...</span>
+                        </div>
+          </div>
+    <div
+      class="alert alert-danger offset-sm-4 col-sm-4"
+      style="margin-top:2em;"
+      *ngIf="!check"
+    >
+      Oops! Seems like there was an error. Please go back & try again.
+    </div>
+    <div
+      id="carousel1"
+      class="carousel slide offset-sm-4 col-sm-4"
+      data-ride="carousel"
+      *ngIf="check && this.flag"
+    >
+    <ol class="carousel-indicators">
+            <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel1" data-slide-to="1"></li>
+            <li data-target="#carousel1" data-slide-to="2"></li>
+            <li data-target="#carousel1" data-slide-to="3"></li>
+            <li data-target="#carousel1" data-slide-to="4"></li>
+            <li data-target="#carousel1" data-slide-to="5"></li>
+            <li data-target="#carousel1" data-slide-to="6"></li>
+          </ol>
+      <div class="carousel-inner" >
+        <div
+          *ngFor="let days of forecastdays; let i = index"
+          class="carousel-item {{ i == 0 ? 'active' : '' }}"
+        >
+          <div class="design text-center my-3">
+            <h4>Date: {{ days?.date | date: "dd MMM, yyyy" }}</h4>
+            <br>
+            <img [src]="this.days?.day.condition.icon" alt="" />
+            <ul>
+              <li>
+                Weather Condition &nbsp;: &nbsp; {{ days?.day.condition.text }}
+              </li>
+
+              <li>
+                Temperature in Celcius &nbsp;: &nbsp;
+                {{ days?.day.avgtemp_c }}&#8451;
+              </li>
+              <li>
+                Temperature in Farenheit &nbsp;:&nbsp;{{
+                  days?.day.avgtemp_f
+                }}&#8457;
+              </li>
+              <li>Humidity &nbsp;:&nbsp;{{ days?.day.avghumidity }}%</li>
+            </ul>
+            <br>
+          </div>
+        </div>
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carousel1"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carousel1"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <div class="row text-center" style = "margin-top: -1.5em">
+        <div class="offset-sm-4 col-sm-4"  *ngIf = "check">
+        <a routerLink = '/' class = 'link'>
+        <div class="design">
+          Home Page
+        </div>
+        </a>
+        </div>
+      </div>
+</div>
